@@ -166,6 +166,21 @@ export interface PaginatedResponse<T> {
   hasMore: boolean
 }
 
+export interface SearchFilters {
+  query?: string
+  category?: ScholarshipCategory[]
+  level?: ScholarshipLevel[]
+  funding_type?: FundingType[]
+  japanese_required?: boolean
+  nationality?: string[]
+  field?: string[]
+  deadline_before?: string
+  stipend_min?: number
+  page?: number
+  limit?: number
+  per_page?: number
+  sort?: 'recent' | 'deadline' | 'stipend' | 'popular'
+}
 export interface AnalyticsData {
   total_users: number
   total_scholarships: number

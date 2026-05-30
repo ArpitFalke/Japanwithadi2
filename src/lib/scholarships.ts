@@ -46,12 +46,12 @@ export async function getScholarships(
   if (error) throw error
 
   return {
-    data: data as Scholarship[],
-    total: count || 0,
-    page,
-    per_page,
-    total_pages: Math.ceil((count || 0) / per_page),
-  }
+  data: data as Scholarship[],
+  total: count || 0,
+  page,
+  limit: per_page,
+  hasMore: (count || 0) > page * per_page,
+}
 }
 
 export async function getScholarshipBySlug(slug: string): Promise<Scholarship | null> {

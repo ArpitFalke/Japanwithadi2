@@ -63,3 +63,41 @@ export const EDUCATION_LEVELS = [
 ] as const
 
 export const JAPANESE_LEVELS = ['None', 'N5', 'N4', 'N3', 'N2', 'N1', 'Native'] as const
+export function getStatusColor(status: string) {
+  switch (status.toLowerCase()) {
+    case 'applied':
+      return 'text-blue-600'
+    case 'accepted':
+      return 'text-green-600'
+    case 'rejected':
+      return 'text-red-600'
+    case 'pending':
+      return 'text-yellow-600'
+    default:
+      return 'text-gray-600'
+  }
+}
+
+export function daysUntilDeadline(date: string) {
+  return getDaysUntil(date)
+}
+
+export function getCategoryColor(category: string) {
+  switch (category.toLowerCase()) {
+    case 'mext':
+      return 'bg-blue-100 text-blue-800'
+    case 'jasso':
+      return 'bg-green-100 text-green-800'
+    case 'kosen':
+      return 'bg-purple-100 text-purple-800'
+    default:
+      return 'bg-gray-100 text-gray-800'
+  }
+}
+
+export function getCategoryLabel(category: string) {
+  const found = SCHOLARSHIP_CATEGORIES.find(
+    c => c.value.toLowerCase() === category.toLowerCase()
+  )
+  return found?.label || category
+}

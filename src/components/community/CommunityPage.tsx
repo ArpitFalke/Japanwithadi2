@@ -3,11 +3,11 @@ import { motion } from 'framer-motion'
 import { MessageSquare, Users, ThumbsUp, Award, Pin } from 'lucide-react'
 
 const POSTS = [
-  { author: 'Rahul S.', country: '🇮🇳', badge: 'MEXT Scholar', title: 'I got MEXT 2024! Here's everything that worked for me', likes: 847, replies: 124, pinned: true, time: '2 days ago' },
-  { author: 'Fatima A.', country: '🇳🇬', badge: 'JASSO Scholar', title: 'JASSO vs MEXT - Which should I apply for? Complete comparison', likes: 432, replies: 89, pinned: false, time: '4 days ago' },
-  { author: 'Carlos M.', country: '🇧🇷', badge: 'KOSEN Student', title: 'KOSEN life in Nagoya - honest review after 1 year', likes: 391, replies: 67, pinned: false, time: '1 week ago' },
-  { author: 'Priya N.', country: '🇮🇳', badge: 'Applicant', title: 'My MEXT embassy interview experience - Q&A inside!', likes: 284, replies: 56, pinned: false, time: '1 week ago' },
-  { author: 'Liu W.', country: '🇲🇾', badge: 'UTokyo Student', title: 'Cost of living in Tokyo in 2025 - breakdown for students', likes: 215, replies: 44, pinned: false, time: '2 weeks ago' },
+  { author: 'Rahul S.', country: '🇮🇳', badge: 'MEXT Scholar', title: "I got MEXT 2024! Here's everything that worked for me", likes: 847, replies: 124, pinned: true, time: '2 days ago' },
+  { author: 'Fatima A.', country: '🇳🇬', badge: 'JASSO Scholar', title: "JASSO vs MEXT - Which should I apply for? Complete comparison", likes: 432, replies: 89, pinned: false, time: '4 days ago' },
+  { author: 'Carlos M.', country: '🇧🇷', badge: 'KOSEN Student', title: "KOSEN life in Nagoya - honest review after 1 year", likes: 391, replies: 67, pinned: false, time: '1 week ago' },
+  { author: 'Priya N.', country: '🇮🇳', badge: 'Applicant', title: "My MEXT embassy interview experience - Q&A inside!", likes: 284, replies: 56, pinned: false, time: '1 week ago' },
+  { author: 'Liu W.', country: '🇲🇾', badge: 'UTokyo Student', title: "Cost of living in Tokyo in 2025 - breakdown for students", likes: 215, replies: 44, pinned: false, time: '2 weeks ago' },
 ]
 
 export function CommunityPage() {

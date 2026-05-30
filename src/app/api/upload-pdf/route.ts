@@ -52,31 +52,12 @@ export async function POST(req: NextRequest) {
     if (!file) return NextResponse.json({ error: 'No file provided' }, { status: 400 })
 
     // Read file as base64 for Claude
-    const bytes = await file.arrayBuffer()
-    const base64 = Buffer.from(bytes).toString('base64')
+    
 
-    let pdfText = ''
+let pdfText = "PDF extraction temporarily disabled"
 
-    // Try to extract text via Claude vision
-    const visionResponse = await anthropic.messages.create({
-      model: 'claude-opus-4-5',
-      max_tokens: 4000,
-      messages: [{
-        role: 'user',
-        content: [
-          {
-            type: 'document',
-            source: { type: 'base64', media_type: 'application/pdf', data: base64 },
-          },
-          { type: 'text', text: 'Extract all text content from this scholarship PDF document. Return the full text.' },
-        ],
-      }],
-    })
-
-    pdfText = visionResponse.content[0].type === 'text' ? visionResponse.content[0].text : ''
-
-    // Extract structured data
-    const extractionResponse = await anthropic.messages.create({
+// Extract structured data
+const extractionResponse = await anthropic.messages.create({
       model: 'claude-opus-4-5',
       max_tokens: 2000,
       messages: [{
