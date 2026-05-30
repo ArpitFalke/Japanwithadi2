@@ -1,0 +1,229 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Noto+Sans+JP:wght@300;400;500;700&display=swap');
+
+@layer base {
+  :root {
+    --background: 0 0% 2%;
+    --foreground: 0 0% 96%;
+    --card: 0 0% 4%;
+    --card-foreground: 0 0% 96%;
+    --popover: 0 0% 5%;
+    --popover-foreground: 0 0% 96%;
+    --primary: 350 100% 50%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 0 0% 7%;
+    --secondary-foreground: 0 0% 96%;
+    --muted: 0 0% 10%;
+    --muted-foreground: 0 0% 55%;
+    --accent: 350 100% 15%;
+    --accent-foreground: 350 100% 60%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 8%;
+    --input: 0 0% 8%;
+    --ring: 350 100% 50%;
+    --radius: 0.75rem;
+
+    /* Brand tokens */
+    --brand-black: #050505;
+    --brand-red: #ff002f;
+    --brand-white: #f5f5f5;
+    --brand-dark: #111111;
+    --glass: rgba(255, 255, 255, 0.04);
+    --glass-hover: rgba(255, 255, 255, 0.07);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --red-glow: rgba(255, 0, 47, 0.35);
+    --red-dim: rgba(255, 0, 47, 0.1);
+    --red-border: rgba(255, 0, 47, 0.35);
+
+    --font-syne: 'Syne', sans-serif;
+    --font-space-mono: 'Space Mono', monospace;
+    --font-noto-jp: 'Noto Sans JP', sans-serif;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-brand-black text-brand-white font-sans;
+    background-color: #050505;
+  }
+
+  ::selection {
+    background: rgba(255, 0, 47, 0.3);
+    color: #f5f5f5;
+  }
+
+  ::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(255, 0, 47, 0.3);
+    border-radius: 2px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 0, 47, 0.6);
+  }
+}
+
+@layer components {
+  /* Glass Card */
+  .glass-card {
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+
+  .glass-card-hover {
+    @apply glass-card transition-all duration-300;
+  }
+
+  .glass-card-hover:hover {
+    background: var(--glass-hover);
+    border-color: var(--red-border);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 30px var(--red-dim);
+    transform: translateY(-3px);
+  }
+
+  /* Red glow button */
+  .btn-glow {
+    box-shadow: 0 0 20px var(--red-glow);
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+  }
+
+  .btn-glow:hover {
+    box-shadow: 0 0 40px var(--red-glow), 0 0 80px rgba(255, 0, 47, 0.2);
+    transform: translateY(-1px);
+  }
+
+  /* Red tag */
+  .tag-red {
+    background: var(--red-dim);
+    border: 1px solid var(--red-border);
+    color: rgba(255, 80, 80, 0.95);
+  }
+
+  /* Section eyebrow */
+  .eyebrow {
+    @apply text-xs uppercase tracking-[3px] font-mono;
+    color: var(--brand-red);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .eyebrow::before {
+    content: '';
+    display: block;
+    width: 24px;
+    height: 1px;
+    background: var(--brand-red);
+    flex-shrink: 0;
+  }
+
+  /* Grid background */
+  .grid-bg {
+    background-image: linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  /* Scholarship card top border on hover */
+  .scholarship-card-hover::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--brand-red);
+    border-radius: 14px 14px 0 0;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+
+  .scholarship-card-hover:hover::before {
+    opacity: 1;
+  }
+
+  /* Neon text */
+  .neon-text {
+    color: var(--brand-red);
+    text-shadow: 0 0 20px rgba(255, 0, 47, 0.5), 0 0 40px rgba(255, 0, 47, 0.2);
+  }
+
+  /* Status pills */
+  .status-applied {
+    background: rgba(0, 200, 100, 0.1);
+    border: 1px solid rgba(0, 200, 100, 0.3);
+    color: rgba(0, 200, 100, 0.95);
+  }
+
+  .status-pending {
+    background: rgba(255, 165, 0, 0.1);
+    border: 1px solid rgba(255, 165, 0, 0.3);
+    color: rgba(255, 165, 0, 0.95);
+  }
+
+  .status-saved {
+    background: var(--red-dim);
+    border: 1px solid var(--red-border);
+    color: rgba(255, 100, 100, 0.95);
+  }
+
+  .status-rejected {
+    background: rgba(255, 0, 47, 0.06);
+    border: 1px solid rgba(255, 0, 47, 0.2);
+    color: rgba(255, 80, 80, 0.7);
+  }
+
+  /* Chat bubble */
+  .chat-bubble-ai {
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+    border-radius: 4px 14px 14px 14px;
+  }
+
+  .chat-bubble-user {
+    background: var(--red-dim);
+    border: 1px solid var(--red-border);
+    border-radius: 14px 4px 14px 14px;
+  }
+
+  /* Loading skeleton */
+  .skeleton {
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.03) 0%,
+      rgba(255, 255, 255, 0.07) 50%,
+      rgba(255, 255, 255, 0.03) 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+  }
+
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+}
